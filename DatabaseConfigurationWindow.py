@@ -46,6 +46,7 @@ class DatabaseConfigurationWindow:
             filedialog.write(self.port_entry.get() + '\n')
             filedialog.write(self.login_entry.get() + '\n')
             filedialog.write(self.password_entry.get())
+        self.root.destroy()
 
     def run(self):
         self.root.mainloop()

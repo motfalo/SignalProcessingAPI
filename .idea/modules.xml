@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Signal Processing REST API.iml" filepath="$PROJECT_DIR$/.idea/Signal Processing REST API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Signal Processing API/.idea/Signal Processing API.iml" filepath="$PROJECT_DIR$/../Signal Processing API/.idea/Signal Processing API.iml" />
     </modules>
   </component>
 </project>

@@ -3,6 +3,7 @@ import DatabaseConfigurationWindow
 import InDBSaver
 import tkinter.filedialog as tkFileDialog
 import SignalAcquirer
+import ArduinoConfigurationWindow
 
 
 class MainWindow:
@@ -22,16 +23,7 @@ class MainWindow:
         file_menu.add_command(label="Wyjdź", command=self.quit_program)
         menubar.add_cascade(label="Ustawienia", menu=settings_menu)
         settings_menu.add_command(label="Konfiguracja serwera baz danych", command=self.open_database_configuration_window)
-
-    def initialize_menubar(self):
-        menubar = tk.Menu(self.root.master)
-        self.root.config(menu=menubar)
-        file_menu = tk.Menu(menubar)
-        settings_menu = tk.Menu(menubar)
-        menubar.add_cascade(label="Plik", menu=file_menu)
-        file_menu.add_command(label="Wyjdź", command=self.quit_program)
-        menubar.add_cascade(label="Ustawienia", menu=settings_menu)
-        settings_menu.add_command(label="Konfiguracja serwera baz danych", command=self.open_database_configuration_window)
+        settings_menu.add_command(label="Konfiguracja platformy pomiarowej arduino", command=self.open_arduino_configuration_window)
 
     def initialize_buttons(self):
         start_acquisition_button = tk.Button(self.root, text="Zacznij akwizycję", command=self.start_acquisition)
@@ -65,6 +57,10 @@ class MainWindow:
     def open_database_configuration_window(self):
         database_configuration_window = DatabaseConfigurationWindow.DatabaseConfigurationWindow()
         database_configuration_window.run()
+
+    def open_arduino_configuration_window(self):
+        arduino_configuration_window = ArduinoConfigurationWindow.ArduinoConfigurationWindow()
+        arduino_configuration_window.run()
 
     def quit_program(self):
         self.root.destroy()
