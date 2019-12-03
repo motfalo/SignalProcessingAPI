@@ -4,6 +4,7 @@ import InDBSaver
 import tkinter.filedialog as tkFileDialog
 import SignalAcquirer
 import ArduinoConfigurationWindow
+import SignalVisualizer
 
 
 class MainWindow:
@@ -45,7 +46,8 @@ class MainWindow:
         self.signal_acquirer.stop_acquiring()
 
     def visualize(self):
-        pass
+        self.signal_visualizer = SignalVisualizer.SignalVisualizer()
+        self.signal_visualizer.visualize()
 
     def save_in_db(self):
         pass

@@ -12,13 +12,16 @@ class SignalAcquirer:
         self.board = Arduino(PORT_NAME)
         self.iterator = util.Iterator(self.board)
 
+    # TODO or UNDO
     def acquire(self):
         self.iterator.start()
         Tv1 = self.board.get_pin(INPUT_PIN)
         H1 = self.board.get_pin(DIGITAL_PIN)
         time.sleep(1.0)
         # voltage
-        # print(Tv1.read()*5000.0)
+        while True:
+            print(Tv1.read())
+            time.sleep(0.5)
 
     def stop_acquiring(self):
         self.board.exit()
