@@ -1,9 +1,13 @@
-# TODO
+import numpy as np
 
 
 class SignalProcessor:
-    def __init__(self):
+    @staticmethod
+    def filter(signal):
         pass
 
-    def process(self):
+    @staticmethod
+    def process(signal):
+        # TODO medfilt, butterworth, fft, average,
+        # fft_signal = np.fft.fft2(signal)
         pass

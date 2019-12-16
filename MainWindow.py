@@ -5,6 +5,7 @@ import tkinter.filedialog as tkFileDialog
 import SignalAcquirer
 import ArduinoConfigurationWindow
 import SignalVisualizer
+import ExternalProgramLauncher
 
 
 class MainWindow:
@@ -39,11 +40,13 @@ class MainWindow:
         save_on_device_button.pack()
 
     def start_acquisition(self):
-        self.signal_acquirer = SignalAcquirer.SignalAcquirer()
-        self.signal_acquirer.acquire()
+        self.external_program_launcher = ExternalProgramLauncher.ExternalProgramLauncher()
+        self.external_program_launcher.run_external_program()
+        # self.signal_acquirer = SignalAcquirer.SignalAcquirer()
+        # self.signal_acquirer.acquire()
 
     def stop_acquisition(self):
-        self.signal_acquirer.stop_acquiring()
+        pass
 
     def visualize(self):
         self.signal_visualizer = SignalVisualizer.SignalVisualizer()

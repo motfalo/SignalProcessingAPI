@@ -8,7 +8,6 @@ class SignalVisualizer:
     def __init__(self):
         self.y = self.get_signal_values_from_file()
         self.samples_number = len(self.y)
-        # self.x = np.linspace(0, 5*self.samples_number, self.samples_number)
         self.x = np.arange(0, 5*self.samples_number, step=5)
 
     @staticmethod
@@ -28,4 +27,3 @@ class SignalVisualizer:
         layout = go.Layout()
         figure = go.Figure(data=trace, layout=layout)
         offline.plot(figure, auto_open=True, filename="signal.html")
-
