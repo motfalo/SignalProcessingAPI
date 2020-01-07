@@ -1,40 +1,75 @@
 import numpy as np
 import plotly.graph_objects as go
 from plotly import offline
+from typing import Sequence, List
 from tkinter import filedialog as tkFileDialog
 import pandas as pd
+import CustomTextProperty
+import CustomLinesProperty
 
 
 class SignalVisualizer:
-    # def __init__(self):
-    #     pass
-        # self.y = self.get_signal_values_from_file()
-        # self.samples_number = len(self.y)
-        # self.x = np.arange(0, 5*self.samples_number, step=5)
-
-    # @staticmethod
-    # def get_signal_values_from_file():
-    #     filename = tkFileDialog.askopenfilename()
-    #     values = pd.read_csv(filename, delimiter='\n')
-    #     return values.to_numpy(dtype=int)[:, 0]
     @staticmethod
-    def visualize_one(sig, filename, plot_title, x_axis, y_axis, scale_multiplier, step):
+    def visualize_one(sig, filename, plot_title, x_axis, y_axis,
+                      scale_multiplier, step,
+                      custom_text_properties,
+                      custom_lines_properties):
         samples = len(sig)
         time = np.arange(0, samples*scale_multiplier, step=step)
         trace = go.Scatter(
             x=time,
             y=sig,
-            # mode="markers+lines",
             mode="lines",
             name=plot_title
         )
+
         layout = go.Layout()
         figure = go.Figure(data=trace, layout=layout)
+
+        if custom_text_properties:
+            x_vals = [text_property.x for text_property in custom_text_properties]
+            y_vals = [text_property.y for text_property in custom_text_properties]
+            text_vals = [text_property.text for text_property in custom_text_properties]
+            print(x_vals)
+            print(y_vals)
+            print(text_vals)
+
+            figure.add_trace(go.Scatter(
+                x= x_vals,
+                y= y_vals,
+                text=text_vals,
+                mode="text"
+            ))
+
+        for line_property in custom_lines_properties:
+            figure.add_shape(
+                go.layout.Shape(
+                    type="line",
+                    x0=line_property.x1,
+                    y0=line_property.y1,
+                    x1=line_property.x2,
+                    y1=line_property.y2,
+                    line=dict(
+                        width=1,
+                        dash="dashdot",
+                    ),
+                ))
+
+        figure.update_layout(
+            xaxis_title=x_axis,
+            yaxis_title=y_axis,
+            showlegend=False
+        )
+
         offline.plot(figure, auto_open=True, filename=f"signals\\{filename}.html")
 
     @staticmethod
-    def visualize_many(signals, filename_core, plot_title, x_axis, y_axis, scale_multiplier, step):
+    def visualize_many(signals, filename_core, plot_title, x_axis, y_axis,
+                       scale_multiplier, step,
+                       custom_text_properties, custom_lines_properties):
         for i, sig in enumerate(signals, 1):
             filename = f"{filename_core}{i}"
             print(filename)
-            SignalVisualizer.visualize_one(sig, filename, plot_title, x_axis, y_axis, scale_multiplier, step)
+            SignalVisualizer.visualize_one(sig, filename, plot_title, x_axis, y_axis,
+                                           scale_multiplier, step,
+                                           custom_text_properties, custom_lines_properties)

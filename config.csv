@@ -1,2 +1,2 @@
-,signal_filename,plot_title,x_axis,y_axis,scale_multiplier,step,is_convert,conversion_equation,is_med_filter,window_size,is_normalize
-0,signal,Wykres,Czas,Wartości,51,51,False,sig,False,251,False
+signal_filename,plot_title,x_axis,y_axis,scale_multiplier,step,is_convert,conversion_equation,is_med_filter,window_size,is_normalize
+signal,Wykres,Czas [ms],Wartości a,51,51,True,sig,True,251,True

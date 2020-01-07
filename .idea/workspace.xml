@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="386b7b21-69a3-42e6-8a61-69216b9e8a41" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CustomLinesProperty.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomTextProperty.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArduinoConfigurationWindow.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExternalProgramLauncher.py" beforeDir="false" afterPath="$PROJECT_DIR$/ExternalProgramLauncher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InDBSaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/InDBSaver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignalAcquirer.py" beforeDir="false" afterPath="$PROJECT_DIR$/SignalAcquirer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignalProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/SignalProcessor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignalVisualizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/SignalVisualizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -244,7 +242,7 @@
       <workItem from="1577811921385" duration="662000" />
       <workItem from="1577816497539" duration="606000" />
       <workItem from="1578250370413" duration="10066000" />
-      <workItem from="1578304746564" duration="18669000" />
+      <workItem from="1578304746564" duration="34055000" />
     </task>
     <servers />
   </component>
@@ -265,7 +263,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Signal_Processing_API$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1578388507770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Signal_Processing_API$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1578408044731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Signal_Processing_REST_API$DatabaseConfigurationWindow.coverage" NAME="DatabaseConfigurationWindow Coverage Results" MODIFIED="1574074279018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Signal_Processing_REST_API$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1574078660834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Signal_Processing_REST_API$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1574532138158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
