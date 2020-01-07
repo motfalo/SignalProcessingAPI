@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="386b7b21-69a3-42e6-8a61-69216b9e8a41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ExternalProgramLauncher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/signal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArduinoConfigurationWindow.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExternalProgramLauncher.py" beforeDir="false" afterPath="$PROJECT_DIR$/ExternalProgramLauncher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InDBSaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/InDBSaver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalAcquirer.py" beforeDir="false" afterPath="$PROJECT_DIR$/SignalAcquirer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignalProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/SignalProcessor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignalVisualizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/SignalVisualizer.py" afterDir="false" />
     </list>
@@ -14,6 +16,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Signal Processing API" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -226,7 +231,20 @@
       <workItem from="1576317837904" duration="15000" />
       <workItem from="1576344354938" duration="1683000" />
       <workItem from="1576437816026" duration="4866000" />
-      <workItem from="1576487226491" duration="230000" />
+      <workItem from="1576487226491" duration="2228000" />
+      <workItem from="1576523888616" duration="1568000" />
+      <workItem from="1576531143148" duration="603000" />
+      <workItem from="1576575274867" duration="408000" />
+      <workItem from="1576610710742" duration="1289000" />
+      <workItem from="1576661481094" duration="1197000" />
+      <workItem from="1577116074558" duration="669000" />
+      <workItem from="1577193499279" duration="12000" />
+      <workItem from="1577788723580" duration="1563000" />
+      <workItem from="1577810406460" duration="610000" />
+      <workItem from="1577811921385" duration="662000" />
+      <workItem from="1577816497539" duration="606000" />
+      <workItem from="1578250370413" duration="10066000" />
+      <workItem from="1578304746564" duration="18669000" />
     </task>
     <servers />
   </component>
@@ -247,7 +265,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Signal_Processing_API$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1576451185609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Signal_Processing_API$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1578388507770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Signal_Processing_REST_API$DatabaseConfigurationWindow.coverage" NAME="DatabaseConfigurationWindow Coverage Results" MODIFIED="1574074279018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Signal_Processing_REST_API$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1574078660834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Signal_Processing_REST_API$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1574532138158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

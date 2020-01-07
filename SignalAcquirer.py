@@ -1,27 +1,19 @@
-from pyfirmata import Arduino, util
-import time
-
-# UNDO in future
-PORT_NAME = "COM3"
-INPUT_PIN = "a:0:i"
-DIGITAL_PIN = "d:3:p"
+import pandas as pd
+from tkinter import filedialog as tkFileDialog
 
 
 class SignalAcquirer:
-    def __init__(self):
-        self.board = Arduino(PORT_NAME)
-        self.iterator = util.Iterator(self.board)
+    @staticmethod
+    def acquire_one_from_txt_file(delimiter='\n'):
+        filename = tkFileDialog.askopenfilename()
+        raw_signal = pd.read_csv(filename, delimiter=delimiter)
+        return raw_signal.to_numpy(dtype=float)[:, 0]
 
-    # TODO or UNDO
-    def acquire(self):
-        self.iterator.start()
-        Tv1 = self.board.get_pin(INPUT_PIN)
-        H1 = self.board.get_pin(DIGITAL_PIN)
-        time.sleep(1.0)
-        # voltage
-        while True:
-            print(Tv1.read())
-            time.sleep(0.5)
-
-    def stop_acquiring(self):
-        self.board.exit()
+    @staticmethod
+    def acquire_many_from_txt_file(delimiter='\n'):
+        filenames = tkFileDialog.askopenfilenames()
+        raw_signals = []
+        for filename in filenames:
+            raw_signal = pd.read_csv(filename, delimiter=delimiter).to_numpy(dtype=float)[:, 0]
+            raw_signals.append(raw_signal)
+        return raw_signals

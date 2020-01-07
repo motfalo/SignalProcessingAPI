@@ -12,5 +12,4 @@ class ExternalProgramLauncher:
         return path
 
     def run_external_program(self):
-        # subprocess.Popen(self.path)
         subprocess.call(self.path, shell=True)
