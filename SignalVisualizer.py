@@ -13,7 +13,9 @@ class SignalVisualizer:
     def visualize_one(sig, filename, plot_title, x_axis, y_axis,
                       scale_multiplier, step,
                       custom_text_properties,
-                      custom_lines_properties):
+                      custom_lines_properties,
+                      custom_x_axis_properties):
+
         samples = len(sig)
         time = np.arange(0, samples*scale_multiplier, step=step)
         trace = go.Scatter(
@@ -30,9 +32,9 @@ class SignalVisualizer:
             x_vals = [text_property.x for text_property in custom_text_properties]
             y_vals = [text_property.y for text_property in custom_text_properties]
             text_vals = [text_property.text for text_property in custom_text_properties]
-            print(x_vals)
-            print(y_vals)
-            print(text_vals)
+            # print(x_vals)
+            # print(y_vals)
+            # print(text_vals)
 
             figure.add_trace(go.Scatter(
                 x= x_vals,
@@ -55,6 +57,15 @@ class SignalVisualizer:
                     ),
                 ))
 
+        if custom_x_axis_properties:
+            text_vals = [x_axis_property.text for x_axis_property in custom_x_axis_properties]
+            x_vals = [x_axis_property.x for x_axis_property in custom_x_axis_properties]
+
+            figure.update_xaxes(
+                ticktext=text_vals,
+                tickvals=x_vals,
+            )
+
         figure.update_layout(
             xaxis_title=x_axis,
             yaxis_title=y_axis,
@@ -66,10 +77,14 @@ class SignalVisualizer:
     @staticmethod
     def visualize_many(signals, filename_core, plot_title, x_axis, y_axis,
                        scale_multiplier, step,
-                       custom_text_properties, custom_lines_properties):
+                       custom_text_properties,
+                       custom_lines_properties,
+                        custom_x_axis_properties):
         for i, sig in enumerate(signals, 1):
             filename = f"{filename_core}{i}"
             print(filename)
             SignalVisualizer.visualize_one(sig, filename, plot_title, x_axis, y_axis,
                                            scale_multiplier, step,
-                                           custom_text_properties, custom_lines_properties)
+                                           custom_text_properties,
+                                           custom_lines_properties,
+                                           custom_x_axis_properties)

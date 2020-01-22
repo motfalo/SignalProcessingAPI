@@ -9,6 +9,7 @@ import SignalProcessor
 import pandas as pd
 import CustomLinesProperty
 import CustomTextProperty
+import CustomXAxisProperty
 
 
 class MainWindow:
@@ -47,7 +48,6 @@ class MainWindow:
         save_in_db_button.pack()
 
     def initialize_processing_tools(self):
-        self.delimiter = tk.StringVar()
         self.signal_filename = tk.StringVar(value="signal")
         self.plot_title = tk.StringVar(value="Wykres")
         self.x_axis = tk.StringVar(value="Czas")
@@ -62,6 +62,9 @@ class MainWindow:
         self.is_custom_text = tk.BooleanVar(value=False)
         self.custom_text = tk.StringVar()
         self.custom_lines = tk.StringVar()
+        self.is_custom_x_axis = tk.BooleanVar(value = False)
+        self.custom_x_axis = tk.StringVar()
+
         self.signal_filename_label = tk.Label(self.root, text="Nazwa sygnału")
         self.signal_filename_label.pack()
         self.signal_filename_entry = tk.Entry(self.root, textvariable=self.signal_filename)
@@ -111,6 +114,14 @@ class MainWindow:
         self.custom_lines_label.pack()
         self.custom_lines_entry = tk.Entry(self.root, textvariable=self.custom_lines)
         self.custom_lines_entry.pack()
+        self.is_custom_x_axis_checkbox = tk.Checkbutton(self.root, text="Dostosuj oś x",
+                                                        variable=self.is_custom_x_axis)
+        self.is_custom_x_axis_checkbox.pack()
+        self.custom_x_axis_label = tk.Label(self.root, text = "Format tekst, x;")
+        self.custom_x_axis_label.pack()
+        self.custom_x_axis_entry = tk.Entry(self.root, textvariable=self.custom_x_axis)
+        self.custom_x_axis_entry.pack()
+
         save_configuration_button = tk.Button(self.root, text="Zapisz konfigurację",
                                               command=self.save_processing_configuration)
         save_configuration_button.pack(side="left")
@@ -129,30 +140,12 @@ class MainWindow:
              self.window_size.get(), self.conversion_equation.get())
         sig = signal_processor.process_one(raw_signal)
         custom_lines_properties, custom_text_properties = self.get_properties()
+        custom_x_axis_properties = self.get_custom_x_axis_properies()
 
         SignalVisualizer.SignalVisualizer.visualize_one \
             (sig, self.signal_filename.get(), self.plot_title.get(),
              self.x_axis.get(), self.y_axis.get(), self.scale_multiplier.get(), self.step.get(),
-             custom_text_properties, custom_lines_properties)
-
-    def get_properties(self):
-        custom_lines_properties = []
-        custom_text_properties = []
-        if self.is_custom_text.get():
-            custom_texts = self.custom_text.get().split(sep=';')
-            for text in custom_texts:
-                split_text = text.split(',')
-                custom_text_property = CustomTextProperty.CustomTextProperty \
-                    (split_text[0], split_text[1], split_text[2])
-                custom_text_properties.append(custom_text_property)
-
-            custom_lines = self.custom_lines.get().split(sep=';')
-            for line in custom_lines:
-                split_line = line.split(sep=',')
-                custom_line_property = CustomLinesProperty.CustomLinesProperty \
-                    (split_line[0], split_line[1], split_line[2], split_line[3])
-                custom_lines_properties.append(custom_line_property)
-        return custom_lines_properties, custom_text_properties
+             custom_text_properties, custom_lines_properties, custom_x_axis_properties)
 
     def process_and_visualize_many(self):
         raw_signals = SignalAcquirer.SignalAcquirer.acquire_many_from_txt_file()
@@ -160,12 +153,13 @@ class MainWindow:
             (self.is_convert.get(), self.is_med_filter.get(), self.is_normalize.get(),
              self.window_size.get(), self.conversion_equation.get())
         sigs = signal_processor.process_many(raw_signals)
-        if self.is_custom_text.get():
-            pass
+        custom_lines_properties, custom_text_properties = self.get_properties()
+        custom_x_axis_properties = self.get_custom_x_axis_properies()
 
         SignalVisualizer.SignalVisualizer.visualize_many \
             (sigs, self.signal_filename.get(), self.plot_title.get(),
-             self.x_axis.get(), self.y_axis.get(), self.scale_multiplier.get(), self.step.get())
+             self.x_axis.get(), self.y_axis.get(), self.scale_multiplier.get(), self.step.get(),
+             custom_text_properties, custom_lines_properties, custom_x_axis_properties)
 
     def process_and_visualize_average_of_many(self):
         raw_signals = SignalAcquirer.SignalAcquirer.acquire_many_from_txt_file()
@@ -173,53 +167,96 @@ class MainWindow:
             (self.is_convert.get(), self.is_med_filter.get(), self.is_normalize.get(),
              self.window_size.get(), self.conversion_equation.get())
         sig = signal_processor.process_many_to_one(raw_signals)
-        if self.is_custom_text.get():
-            pass
+        custom_lines_properties, custom_text_properties = self.get_properties()
+        custom_x_axis_properties = self.get_custom_x_axis_properies()
 
         SignalVisualizer.SignalVisualizer.visualize_one \
             (sig, self.signal_filename.get(), self.plot_title.get(),
-             self.x_axis.get(), self.y_axis.get(), self.scale_multiplier.get(), self.step.get())
+             self.x_axis.get(), self.y_axis.get(), self.scale_multiplier.get(), self.step.get(),
+             custom_text_properties, custom_lines_properties, custom_x_axis_properties)
+
+    def get_properties(self):
+        custom_lines_properties = []
+        custom_text_properties = []
+        if self.is_custom_text.get():
+            custom_text_values = self.custom_text.get().split(sep=';')
+            for text in custom_text_values:
+                split_text = text.split(',')
+                custom_text_property = CustomTextProperty.CustomTextProperty \
+                    (split_text[0], split_text[1], split_text[2])
+                custom_text_properties.append(custom_text_property)
+
+            custom_line_values = self.custom_lines.get().split(sep=';')
+            for line in custom_line_values:
+                split_line = line.split(sep=',')
+                custom_line_property = CustomLinesProperty.CustomLinesProperty \
+                    (split_line[0], split_line[1], split_line[2], split_line[3])
+                custom_lines_properties.append(custom_line_property)
+        return custom_lines_properties, custom_text_properties
+
+    def get_custom_x_axis_properies(self):
+        custom_x_axis_properies = []
+        if self.is_custom_x_axis.get():
+            custom_x_axis_values = self.custom_x_axis.get().split(sep=';')
+            for x_axis_value in custom_x_axis_values:
+                split_x_axis = x_axis_value.split(sep=',')
+                custom_x_axis_property = CustomXAxisProperty.CustomXAxisProperty\
+                    (split_x_axis[0], split_x_axis[1])
+                custom_x_axis_properies.append(custom_x_axis_property)
+        return custom_x_axis_properies
 
     def save_in_db(self):
-        pass
+        saver = InDBSaver.InDBSaver()
+        saver.store_signal_image()
 
     def open_database_configuration_window(self):
         database_configuration_window = DatabaseConfigurationWindow.DatabaseConfigurationWindow()
         database_configuration_window.run()
 
     def save_processing_configuration(self):
-        configuration = {}
-        configuration["signal_filename"] = self.signal_filename.get()
-        configuration["plot_title"] = self.plot_title.get()
-        configuration["x_axis"] = self.x_axis.get()
-        configuration["y_axis"] = self.y_axis.get()
-        configuration["scale_multiplier"] = self.scale_multiplier.get()
-        configuration["step"] = self.step.get()
-        configuration["is_convert"] = self.is_convert.get()
-        configuration["conversion_equation"] = self.conversion_equation.get()
-        configuration["is_med_filter"] = self.is_med_filter.get()
-        configuration["window_size"] = self.window_size.get()
-        configuration["is_normalize"] = self.is_normalize.get()
-        index = [0]
-        config_dataframe = pd.DataFrame(configuration, index=index)
-        config_dataframe.to_csv("config.csv", index=False)
+        config_dataframe = pd.DataFrame(
+            {
+                "signal_filename": [self.signal_filename.get()],
+                "plot_title": [self.plot_title.get()],
+                "x_axis": [self.x_axis.get()],
+                "y_axis": [self.y_axis.get()],
+                "scale_multiplier": [self.scale_multiplier.get()],
+                "step": [self.step.get()],
+                "is_convert": [self.is_convert.get()],
+                "conversion_equation": [self.conversion_equation.get()],
+                "is_med_filter": [self.is_med_filter.get()],
+                "window_size": [self.window_size.get()],
+                "is_normalize": [self.is_normalize.get()],
+                "is_custom_text": [self.is_custom_text.get()],
+                "custom_text": [self.custom_text.get()],
+                "custom_lines": [self.custom_lines.get()],
+                "is_custom_x_axis": [self.is_custom_x_axis.get()],
+                "custom_x_axis": [self.custom_x_axis.get()]
+            }
+        )
+        config_dataframe.to_csv("custom_properties_config.txt", sep='|', header=True, index=False)
+
 
     def load_processing_configuration(self):
         config_filename = tkFileDialog.askopenfilename()
-        config_dataframe = pd.read_csv(config_filename, index_col=False)
-        configuration = config_dataframe.to_dict()
+        config_dataframe = pd.read_csv(config_filename, sep='|')
 
-        self.signal_filename.set(configuration["signal_filename"])
-        self.plot_title.set(configuration["plot_title"])
-        self.x_axis.set(configuration["x_axis"])
-        self.y_axis.set(configuration["y_axis"])
-        self.scale_multiplier.set(configuration["scale_multiplier"])
-        self.step.set(configuration["step"])
-        self.is_convert.set(str(configuration["is_convert"]))
-        self.conversion_equation.set(configuration["conversion_equation"])
-        self.is_med_filter.set(str(configuration["is_med_filter"]))
-        self.window_size.set(configuration["window_size"])
-        self.is_normalize.set(str(configuration["is_normalize"]))
+        self.signal_filename.set(config_dataframe["signal_filename"][0])
+        self.plot_title.set(config_dataframe["plot_title"][0])
+        self.x_axis.set(config_dataframe["x_axis"][0])
+        self.y_axis.set(config_dataframe["y_axis"][0])
+        self.scale_multiplier.set(config_dataframe["scale_multiplier"][0])
+        self.step.set(config_dataframe["step"][0])
+        self.is_convert.set(str(config_dataframe["is_convert"])[0])
+        self.conversion_equation.set(config_dataframe["conversion_equation"][0])
+        self.is_med_filter.set(str(config_dataframe["is_med_filter"][0]))
+        self.window_size.set(config_dataframe["window_size"][0])
+        self.is_normalize.set(str(config_dataframe["is_normalize"][0]))
+        self.is_custom_text.set(str(config_dataframe["is_custom_text"][0]))
+        self.custom_text.set(config_dataframe["custom_text"][0])
+        self.custom_lines.set(config_dataframe["custom_lines"][0])
+        self.is_custom_x_axis.set(str(config_dataframe["is_custom_x_axis"][0]))
+        self.custom_x_axis.set(config_dataframe["custom_x_axis"][0])
 
     def quit_program(self):
         self.root.destroy()

@@ -2,18 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="386b7b21-69a3-42e6-8a61-69216b9e8a41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CustomLinesProperty.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CustomTextProperty.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomXAxisProperty.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DatabaseConfigurationWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/DatabaseConfigurationWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InDBSaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/InDBSaver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignalVisualizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/SignalVisualizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Signal Processing API" />
@@ -183,8 +197,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Main (1)" />
-        <item itemvalue="Python.SignalVisualizer" />
         <item itemvalue="Python.MainWindow" />
+        <item itemvalue="Python.SignalVisualizer" />
         <item itemvalue="Python.DatabaseConfigurationWindow" />
         <item itemvalue="Python.Main" />
       </list>
@@ -242,7 +256,10 @@
       <workItem from="1577811921385" duration="662000" />
       <workItem from="1577816497539" duration="606000" />
       <workItem from="1578250370413" duration="10066000" />
-      <workItem from="1578304746564" duration="34055000" />
+      <workItem from="1578304746564" duration="37739000" />
+      <workItem from="1579202654401" duration="3398000" />
+      <workItem from="1579454818389" duration="1812000" />
+      <workItem from="1579461528857" duration="11735000" />
     </task>
     <servers />
   </component>
@@ -263,7 +280,8 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Signal_Processing_API$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1578408044731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Signal_Processing_API$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1579689467889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Signal_Processing_API$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1579708388318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Signal_Processing_REST_API$DatabaseConfigurationWindow.coverage" NAME="DatabaseConfigurationWindow Coverage Results" MODIFIED="1574074279018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Signal_Processing_REST_API$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1574078660834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Signal_Processing_REST_API$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1574532138158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

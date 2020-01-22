@@ -1,6 +1,7 @@
 import tkinter as tk
 import pymysql.cursors
 from tkinter import filedialog as tkFileDialog
+import pandas as pd
 
 
 class DatabaseConfigurationWindow:
@@ -31,6 +32,10 @@ class DatabaseConfigurationWindow:
         password_label.pack(padx=20, pady=20)
         self.password_entry = tk.Entry(self.root)
         self.password_entry.pack()
+        tablename_label = tk.Label(self.root, text="Tabela")
+        tablename_label.pack(padx=20, pady=20)
+        self.tablename_entry = tk.Entry(self.root)
+        self.tablename_entry.pack()
         save_configuration_button = tk.Button(self.root, text="Zapisz", command=self.save)
         save_configuration_button.pack(side="left")
         exit_button = tk.Button(self.root, text="Wyjdź", command=self.quit_window)
@@ -40,12 +45,18 @@ class DatabaseConfigurationWindow:
         self.root.destroy()
 
     def save(self):
-        with tkFileDialog.asksaveasfile(mode='w', defaultextension=".txt") as filedialog:
-            filedialog.write(self.host_entry.get() + '\n')
-            filedialog.write(self.database_entry.get() + '\n')
-            filedialog.write(self.port_entry.get() + '\n')
-            filedialog.write(self.login_entry.get() + '\n')
-            filedialog.write(self.password_entry.get())
+        config_dataframe = pd.DataFrame(
+            {
+                "host": [self.host_entry.get()],
+                "db": [self.database_entry.get()],
+                "port": [self.port_entry.get()],
+                "user": [self.login_entry.get()],
+                "password": [self.password_entry.get()],
+                "tablename": [self.tablename_entry.get()]
+            }
+        )
+        # filepath = tkFileDialog.asksaveasfilename(defaultextension=".txt")
+        config_dataframe.to_csv("database_config.txt", sep='|', header=True, index=False)
         self.root.destroy()
 
     def run(self):
